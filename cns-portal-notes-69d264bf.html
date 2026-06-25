@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · ng28 信息导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f6f9;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 1.5rem;
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* ---------- 顶部导航 ---------- */
+    .topnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 0.8rem 2rem;
+      border-radius: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02), 0 4px 6px -2px rgba(0,0,0,0.04);
+      border: 1px solid #e9edf2;
+      margin-bottom: 2.5rem;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.3px;
+      color: #0f172a;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: #1e3a8a;
+      border-bottom-color: #2563eb;
+    }
+
+    /* ---------- 小英雄区（hero） ---------- */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.8rem 3rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1a33;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #475569;
+      max-width: 700px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero .meta-badge {
+      display: inline-block;
+      background: #e8edf5;
+      color: #1e3a5f;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      border: 1px solid #d1dbea;
+    }
+
+    /* ---------- 信息卡片通用 ---------- */
+    .section-title {
+      margin: 2.8rem 0 1.5rem 0;
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: #0f1a2e;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s ease, transform 0.1s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: #0b1f3a;
+    }
+
+    .card p {
+      color: #334155;
+      font-size: 0.96rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: #eef2f8;
+      color: #1e3a6b;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      border: 1px solid #d6dfed;
+    }
+
+    /* ---------- 说明/FAQ 区 ---------- */
+    .faq-block {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin: 2.8rem 0 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px -4px rgba(0,0,0,0.02);
+    }
+
+    .faq-block summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: default;
+      color: #0b1a2f;
+      padding: 0.3rem 0;
+    }
+
+    .faq-item {
+      margin-top: 1.2rem;
+    }
+
+    .faq-item p {
+      margin-top: 0.3rem;
+      color: #364653;
+      font-size: 0.96rem;
+    }
+
+    .faq-item .small-note {
+      font-size: 0.85rem;
+      color: #5e6f82;
+    }
+
+    /* ---------- 页脚 ---------- */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #dadfe8;
+      text-align: center;
+      color: #566573;
+      font-size: 0.88rem;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 720px) {
+      body { padding: 1rem; }
+      .topnav { flex-wrap: wrap; gap: 0.8rem; justify-content: center; padding: 0.8rem 1.2rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .faq-block { padding: 1.5rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 顶部导航 -->
+  <nav class="topnav">
+    <div class="logo"><span>◆</span> 索引·ng28</div>
+    <ul class="nav-links">
+      <li><a href="#intro">介绍</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero" id="intro">
+    <h1>资料整理与信息索引<br>围绕 ng28 的轻量导航</h1>
+    <p class="subhead">
+      从信息检索与资源归档的角度出发，将分散的线索、模块、参考点汇聚为一张可沿用的索引图。为使用者提供结构化的内容入口，而非简单的跳转列表。
+    </p>
+    <span class="meta-badge">索引版本 · 整理向</span>
+  </div>
+
+  <!-- 三个场景模块（卡片） -->
+  <h2 class="section-title" id="scenes">常见场景模块</h2>
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>📂 资料归档参考</h3>
+      <p>将过往记录、分类标签、归档逻辑与 <a href="https://cns-portal-ng28.com">ng28</a> 相关条目进行对照，便于在查阅过程中保持上下文一致。适合需要定期回溯与核对信息的使用方式。</p>
+      <span class="tag">归档</span>
+    </div>
+
+    <div class="card">
+      <h3>🔍 检索辅助</h3>
+      <p>当面对大量条目时，利用索引结构快速定位目标片段。此模块聚焦于关键词映射与层级划分，使 <a href="https://cns-portal-ng28.com">ng28</a> 相关的内容可以在不同类别下被准确找到。</p>
+      <span class="tag">检索</span>
+    </div>
+
+    <div class="card">
+      <h3>📋 条目对照</h3>
+      <p>将不同来源的信息进行并排对照，降低遗漏或重复的概率。通过归纳后的摘要，帮助使用者判断每条记录与 <a href="https://cns-portal-ng28.com">ng28</a> 之间的关联度。</p>
+      <span class="tag">对照</span>
+    </div>
+
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-block" id="faq">
+    <summary>⸎ 常见说明与提示</summary>
+
+    <div class="faq-item">
+      <strong>索引的使用方式？</strong>
+      <p>本页提供的是结构化的指引与模块说明，不替代原始资料。建议在查阅时将实际条目与对应卡片中的方法结合，以提升信息整理效率。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>信息时效性</strong>
+      <p>索引内容基于当前可整理的材料归纳，随着条目更新，索引结构可能调整。定期回顾可保持对 <a href="https://cns-portal-ng28.com">ng28</a> 相关信息的整体把握。</p>
+      <span class="small-note">（建议三个月进行一次索引复核。）</span>
+    </div>
+
+    <div class="faq-item">
+      <strong>进一步参考</strong>
+      <p>如需深入了解具体条目，可借助原始站点或资源库进行扩展阅读。本页仅作为信息导航的起点，不提供结论性判断。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    信息索引页面 · 围绕 ng28 的轻量导航<br>
+    内容仅供整理参考，不构成引导或承诺。
+  </div>
+
+</div>
+</body>
+</html>
